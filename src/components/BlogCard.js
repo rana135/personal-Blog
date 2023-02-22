@@ -3,9 +3,9 @@ import { BiListPlus } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
-import { history, removeFromHistory, removeFromWishlist, wishList } from "../redux/actions/productAction";
+import { history, removeFromHistory, removeFromWishlist, wishList } from "../redux/actions/blogAction";
 
-const ProductCard = ({ blog }) => {
+const BlogCard = ({ blog }) => {
   //console.log(blog);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,8 +27,10 @@ const ProductCard = ({ blog }) => {
         <span className="text-lg">{blog?.content[0].text.slice(0, 135)}</span>
         <span>
           <button
-            onClick={() => dispatch(history(blog))}
-            // onClick={() => nevigateblogDetail(blog?._id)}
+            onClick={() => {
+              dispatch(history(blog));
+              nevigateblogDetail(blog?._id);
+            }}
             className=' flex-1 ml-1 hover:text-indigo-900 text-white font-bold'
           >
             read more...
@@ -47,17 +49,7 @@ const ProductCard = ({ blog }) => {
           <span
             class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 mr-2 text-xs font-semibold text-blue-600"
           >
-            Design
-          </span>
-          <span
-            class="inline-flex items-center rounded-full bg-indigo-50 mr-2 px-2 py-1 text-xs font-semibold text-indigo-600"
-          >
-            Product
-          </span>
-          <span
-            class="inline-flex items-center rounded-full bg-orange-50 px-2 py-1 text-xs font-semibold text-purple-600"
-          >
-            Develop
+            {blog?.tags}
           </span>
         </div>
         <div className="flex gap-3">
@@ -96,4 +88,4 @@ const ProductCard = ({ blog }) => {
   );
 };
 
-export default ProductCard;
+export default BlogCard;

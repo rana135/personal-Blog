@@ -54,9 +54,9 @@ const BlogDetail = () => {
                     </div>
                 </a>
                 <div class="flex items-center justify-between p-2 md:p-4 mx-2 md:mx-4">
-                    <a href='#'>
+                    <a href='# '>
                         <div class="flex items-center ml-2">
-                            <img class="overflow-hidden object-cover w-10 h-10 md:w-12 md:h-12 rounded " src="https://i.ibb.co/QpY6TWQ/professional-image.jpg" alt="author" />
+                            <img class="overflow-hidden object-cover w-10 h-10 md:w-12 md:h-12 rounded " src={blog?.author?.img} alt="author" />
                             <div class="text-xs ml-2 text-left text-gray-600 dark:text-gray-400">
                                 <p>{blog?.author?.name}</p>
                                 <p>{blog?.author?.email}</p>

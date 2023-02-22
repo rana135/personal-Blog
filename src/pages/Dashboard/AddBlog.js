@@ -45,40 +45,40 @@ const AddBlog = () => {
       >
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='name'>
-            Name
+            Author Name
           </label>
-          <input type='text' id='name' {...register("name")} />
+          <input type='text' id='name' {...register("name")} placeholder="Md Rana Hossain"/>
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='email'>
-            Email
+          Author Email
           </label>
-          <input type='text' name='email' id='email' {...register("email")} />
+          <input type='text' name='email' id='email' {...register("email")} placeholder="rana@gmail.com"/>
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='email'>
-            Bio
+          Author Bio
           </label>
-          <input type='text' name='bio' id='bio' {...register("bio")} />
+          <input type='text' name='bio' id='bio' {...register("bio")} placeholder="Rana is a Professional Developer"/>
         </div>
 
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='date'>
             Date
           </label>
-          <input type='text' id='date' {...register("date")} />
+          <input type='text' id='date' {...register("date")} placeholder="05-10-2022"/>
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='title'>
             title
           </label>
-          <input type='text' name='title' id='title' {...register("title")} />
+          <input type='text' name='title' id='title' {...register("title")} placeholder="what is Article"/>
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='image'>
             Image
           </label>
-          <input type='text' name='image' id='image' {...register("image")} />
+          <input type='text' name='image' id='image' {...register("image")} placeholder="Image"/>
         </div>
 
         <div className='flex flex-col w-full max-w-xs'>
@@ -95,7 +95,7 @@ const AddBlog = () => {
           <label className='mb-2' htmlFor='tags'>
             tags
           </label>
-          <input type='text' name='tags' id='tags' {...register("tags")} />
+          <input type='text' name='tags' id='tags' {...register("tags")} placeholder="React"/>
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='type'>
@@ -106,6 +106,7 @@ const AddBlog = () => {
             name='type'
             id='type'
             {...register("type")}
+            placeholder="Blog SubTitle"
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -117,6 +118,7 @@ const AddBlog = () => {
             name='text'
             id='text'
             {...register("text")}
+            placeholder="Blog Text"
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -128,6 +130,7 @@ const AddBlog = () => {
             name='type1'
             id='type'
             {...register("type1")}
+            placeholder="Blog SubTitle"
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -139,6 +142,7 @@ const AddBlog = () => {
             name='text1'
             id='text1'
             {...register("text1")}
+            placeholder="Blog Text"
           />
         </div>
 

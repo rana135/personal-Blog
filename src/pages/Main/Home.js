@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../../components/ProductCard";
-import { loaded, toggleTags } from "../../redux/actions/productAction";
+import BlogCard from "../../components/BlogCard";
+import { toggleTags } from "../../redux/actions/blogAction";
 import loadBlogData from "../../redux/thunk/Blogs/loadBlogData";
 
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
   let content;
   if (blogs.length) {
     content = blogs.map((blog) => (
-      <ProductCard blog={blog} />
+      <BlogCard blog={blog} />
     ))
   }
   if (blogs.length && tags.length) {
@@ -29,9 +29,8 @@ const Home = () => {
         }
         return blog;
       })
-
       .map((blog) => (
-        <ProductCard blog={blog} />
+        <BlogCard blog={blog} />
       ))
   }
 

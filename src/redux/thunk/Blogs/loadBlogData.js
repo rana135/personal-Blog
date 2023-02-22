@@ -1,4 +1,4 @@
-import { loaded } from "../../actions/productAction";
+import { loaded } from "../../actions/blogAction";
 
 const loadBlogData = () => {
     return async (dispatch, getState) => {

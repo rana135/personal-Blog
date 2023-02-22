@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import loadBlogData from "../../redux/thunk/Blogs/loadBlogData";
 import { AiTwotoneDelete } from 'react-icons/ai'
-import { removeProduct } from "../../redux/actions/productAction";
+import { removeProduct } from "../../redux/actions/blogAction";
 import deleteBlog from "../../redux/thunk/Blogs/deleteBlog";
 
 const BlogList = () => {
@@ -67,7 +67,7 @@ const BlogList = () => {
                   </td>
                   <td class='p-2'>
                     <div class='flex justify-center text-red-500'>
-                      <button onClick={()=>dispatch(deleteBlog(_id))}>
+                      <button onClick={() => dispatch(deleteBlog(_id))}>
                         <AiTwotoneDelete size={20} />
                       </button>
                     </div>

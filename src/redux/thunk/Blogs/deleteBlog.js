@@ -1,4 +1,4 @@
-import { removeProduct } from "../../actions/productAction";
+import { removeProduct } from "../../actions/blogAction";
 
 
 const deleteBlog = (id) => {

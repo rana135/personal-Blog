@@ -1,4 +1,4 @@
-import { addBlog } from "../../actions/productAction";
+import { addBlog } from "../../actions/blogAction";
 
 const addBlogData = (blogs) => {
     return async (dispatch, getState) => {
