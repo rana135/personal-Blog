@@ -17,7 +17,8 @@ const Home = () => {
   const activeClass = "text-white  bg-indigo-500 border-white";
   let content;
   if (blogs.length) {
-    content = blogs.map((blog) => (
+    content = blogs.sort((a,b)=>new Date(a.date) - new Date(b.date))
+    .map((blog) => (
       <BlogCard blog={blog} />
     ))
   }

@@ -37,6 +37,7 @@ const AddBlog = () => {
     dispatch(addBlogData(blog));
   };
 
+
   return (
     <div className='flex justify-center items-center h-full '>
       <form
@@ -47,38 +48,38 @@ const AddBlog = () => {
           <label className='mb-2' htmlFor='name'>
             Author Name
           </label>
-          <input type='text' id='name' {...register("name")} placeholder="Md Rana Hossain"/>
+          <input type='text' id='name' {...register("name")} placeholder="Md Rana Hossain" />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='email'>
-          Author Email
+            Author Email
           </label>
-          <input type='text' name='email' id='email' {...register("email")} placeholder="rana@gmail.com"/>
+          <input type='text' name='email' id='email' {...register("email")} placeholder="rana@gmail.com" />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='email'>
-          Author Bio
+            Author Bio
           </label>
-          <input type='text' name='bio' id='bio' {...register("bio")} placeholder="Rana is a Professional Developer"/>
+          <input type='text' name='bio' id='bio' {...register("bio")} placeholder="Rana is a Professional Developer" />
         </div>
 
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='date'>
             Date
           </label>
-          <input type='text' id='date' {...register("date")} placeholder="05-10-2022"/>
+          <input defaultValue={new Date()} type='text' id='date' {...register("date")} placeholder="05-10-2022" />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='title'>
             title
           </label>
-          <input type='text' name='title' id='title' {...register("title")} placeholder="what is Article"/>
+          <input type='text' name='title' id='title' {...register("title")} placeholder="what is Article" />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='image'>
             Image
           </label>
-          <input type='text' name='image' id='image' {...register("image")} placeholder="Image"/>
+          <input type='text' name='image' id='image' {...register("image")} placeholder="Image" />
         </div>
 
         <div className='flex flex-col w-full max-w-xs'>
@@ -95,7 +96,7 @@ const AddBlog = () => {
           <label className='mb-2' htmlFor='tags'>
             tags
           </label>
-          <input type='text' name='tags' id='tags' {...register("tags")} placeholder="React"/>
+          <input type='text' name='tags' id='tags' {...register("tags")} placeholder="React" />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='type'>
