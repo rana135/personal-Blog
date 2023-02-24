@@ -34,7 +34,7 @@ const AddBlog = () => {
     };
     reset();
     console.log(blog);
-    dispatch(addBlogData(blog));
+    dispatch(addBlogData(blog))
   };
 
 
@@ -67,7 +67,7 @@ const AddBlog = () => {
           <label className='mb-2' htmlFor='date'>
             Date
           </label>
-          <input defaultValue={new Date()} type='text' id='date' {...register("date")} placeholder="05-10-2022" />
+          <input defaultValue={new Date().toISOString().slice(0, 10)} type='text' id='date' {...register("date")} placeholder="05-10-2022" />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='title'>

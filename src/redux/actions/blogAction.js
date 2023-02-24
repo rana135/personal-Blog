@@ -1,12 +1,15 @@
 import {
-  ADD_BLOG,
+  ADD_CONTENT,
   HISTORY,
-  PRODUCT_LOADED,
-  REMOVE_BLOG,
+  GET_CONTENT,
+  DELETE_CONTENT,
   REMOVE_FROM_HISTORY,
   REMOVE_FROM_WISHLIST,
+  SORT_ITEMS_ASC,
+  SORT_ITEMS_DESC,
   TOGGLE_TAGS,
   WISHLIST,
+  UPDATE_DATA,
 } from "../actionTypes/actionTypes";
 
 export const history = (blog) => {
@@ -39,14 +42,26 @@ export const removeFromWishlist = (blog) => {
 
 export const addBlog = (blog) => {
   return {
-    type: ADD_BLOG,
+    type: ADD_CONTENT,
     payload: blog,
   };
 };
 
 export const loaded = (blogs) => {
   return {
-    type: PRODUCT_LOADED,
+    type: GET_CONTENT,
+    payload: blogs,
+  };
+};
+export const sortItemAsc = (blogs) => {
+  return {
+    type: SORT_ITEMS_ASC,
+    payload: blogs,
+  };
+};
+export const sortItemDesc = (blogs) => {
+  return {
+    type: SORT_ITEMS_DESC,
     payload: blogs,
   };
 };
@@ -58,7 +73,15 @@ export const toggleTags = (tags) => {
 };
 export const removeProduct = (id) => {
   return {
-    type: REMOVE_BLOG,
+    type: DELETE_CONTENT,
     payload: id,
   };
 };
+
+
+export const updateBlogAction = (data) => {
+  return {
+     type: UPDATE_DATA,
+     payload: data
+  }
+}

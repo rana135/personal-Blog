@@ -10,7 +10,7 @@
         "date": "2022-05-11",
         "rating": 5,
         "image": "https://i.ibb.co/vvNvjB0/5.png",
-        "categories": "web",
+        "categories": "programming",
         "tags": [
             "React"
         ],
@@ -22,19 +22,19 @@
                 "type": "আজকে যে ৫টি প্যাকেজ বা লাইব্রেরী নিয়ে আপনাদের সাথে আমি আলোচনা করব সেই ৫টি প্যাকেজ হচ্ছেঃ"
             },
             {
-                "text": "1. axios"
+                "type": "1. axios"
             },
             {
-                "text": "2. cleave.js"
+                "type": "2. cleave.js"
             },
             {
-                "text": "3. cogo-toast"
+                "type": "3. cogo-toast"
             },
             {
-                "text": "4. export-from-json"
+                "type": "4. export-from-json"
             },
             {
-                "text": "5. localforage"
+                "type": "5. localforage"
             },
             {
                 "type": "1. axios:",

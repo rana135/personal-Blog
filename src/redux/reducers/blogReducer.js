@@ -1,11 +1,14 @@
 import {
-  ADD_BLOG,
+  ADD_CONTENT,
   HISTORY,
-  PRODUCT_LOADED,
-  REMOVE_BLOG,
+  GET_CONTENT,
+  DELETE_CONTENT,
   REMOVE_FROM_HISTORY,
   REMOVE_FROM_WISHLIST,
+  SORT_ITEMS_ASC,
+  SORT_ITEMS_DESC,
   WISHLIST,
+  UPDATE_DATA,
 } from "../actionTypes/actionTypes";
 
 const initialState = {
@@ -47,23 +50,45 @@ const blogReducer = (state = initialState, action) => {
         ...state,
         wishlist: state.wishlist.filter((blog) => blog._id !== action.payload._id)
       }
-    case ADD_BLOG:
+    case ADD_CONTENT:
       return {
         ...state,
         blogs: [...state.blogs, action.payload],
       };
-    case PRODUCT_LOADED:
+    case GET_CONTENT:
       return {
         ...state,
         blogs: action.payload,
       };
-    case REMOVE_BLOG:
+    case SORT_ITEMS_ASC:
+      return {
+        ...state,
+        blogs: [...state.blogs].sort((a, b) => new Date(a.date) - new Date(b.date))
+      };
+    case SORT_ITEMS_DESC:
+      return {
+        ...state,
+        blogs: [...state.blogs].sort((a, b) => new Date(b.date) - new Date(a.date))
+      };
+    case DELETE_CONTENT:
       return {
         ...state,
         blogs: state.blogs.filter(
           (blog) => blog._id !== action.payload
         ),
       };
+      case UPDATE_DATA:
+        const updateProduct = state.blogs.map(blog => {
+            if (blog._id === action.payload) {
+                return [...blog, action.payload]
+            } else {
+                return blog
+            }
+        })
+        return {
+            ...state,
+            blogs: updateProduct
+        }
 
     default:
       return state;

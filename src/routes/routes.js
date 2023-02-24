@@ -9,6 +9,7 @@ import BlogDetail from "../components/BlogDetail";
 import Wishlist from "../pages/Main/Wishlist";
 import BlogList from "../pages/Dashboard/BlogList";
 import AddBlog from "../pages/Dashboard/AddBlog";
+import UpdateBlog from "../pages/Dashboard/UpdateBlog";
 
 const routes = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const routes = createBrowserRouter([
         path: "add-product",
         element: <AddBlog />,
       },
+      {
+        path: "update-blog/:id",
+        element: <UpdateBlog />,
+      },
+      
     ],
   },
 ]);

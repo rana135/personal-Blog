@@ -2,7 +2,11 @@ export const HISTORY = "HISTORY";
 export const WISHLIST = "WISHLIST";
 export const REMOVE_FROM_HISTORY = "REMOVE_FROM_HISTORY";
 export const REMOVE_FROM_WISHLIST = "REMOVE_FROM_WISHLIST";
-export const ADD_BLOG = "ADD_BLOG";
-export const PRODUCT_LOADED = "PRODUCT_LOADED";
+export const ADD_CONTENT = "ADD_CONTENT";
+export const GET_CONTENT = "GET_CONTENT";
 export const TOGGLE_TAGS = "TOGGLE_TAGS";
-export const REMOVE_BLOG = "REMOVE_BLOG";
+export const DELETE_CONTENT = "DELETE_CONTENT";
+export const SORT_ITEMS_ASC = "SORT_ITEMS_ASC";
+export const SORT_ITEMS_DESC = "SORT_ITEMS_DESC";
+
+export const UPDATE_DATA = "UPDATE_DATA";

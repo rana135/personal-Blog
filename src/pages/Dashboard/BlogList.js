@@ -2,16 +2,23 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import loadBlogData from "../../redux/thunk/Blogs/loadBlogData";
 import { AiTwotoneDelete } from 'react-icons/ai'
-import { removeProduct } from "../../redux/actions/blogAction";
+import { GrDocumentUpdate } from 'react-icons/gr'
 import deleteBlog from "../../redux/thunk/Blogs/deleteBlog";
+import { useNavigate } from "react-router-dom";
 
 const BlogList = () => {
   const blogs = useSelector((state) => state.blog.blogs);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadBlogData());
   }, []);
+
+  const nevigateAddBlog = id => {
+    navigate(`/dashboard/update-blog/${id}`)
+  }
+
 
   return (
     <div class='flex flex-col justify-center items-center h-full w-full '>
@@ -38,7 +45,10 @@ const BlogList = () => {
                   <div class='font-semibold text-left'>Tags</div>
                 </th>
                 <th class='p-2'>
-                  <div class='font-semibold text-center'>Action</div>
+                  <div class='font-semibold text-center'>Delete</div>
+                </th>
+                <th class='p-2'>
+                  <div class='font-semibold text-center'>Update</div>
                 </th>
               </tr>
             </thead>
@@ -69,6 +79,14 @@ const BlogList = () => {
                     <div class='flex justify-center text-red-500'>
                       <button onClick={() => dispatch(deleteBlog(_id))}>
                         <AiTwotoneDelete size={20} />
+                      </button>
+                    </div>
+                  </td>
+
+                  <td class='p-2'>
+                    <div class='flex justify-center text-red-500'>
+                      <button onClick={() => nevigateAddBlog(_id)}>
+                        <GrDocumentUpdate size={20} />
                       </button>
                     </div>
                   </td>
