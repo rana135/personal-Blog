@@ -8,13 +8,17 @@ import {
   SORT_ITEMS_ASC,
   SORT_ITEMS_DESC,
   WISHLIST,
-  UPDATE_DATA,
+  UPDATE_CONTENT,
+  SINGLEDATA,
+  SINGLEUPDATEDATA,
 } from "../actionTypes/actionTypes";
 
 const initialState = {
   history: [],
   wishlist: [],
   blogs: [],
+  blog: [],
+  updateBlogLoad: [],
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -24,11 +28,16 @@ const blogReducer = (state = initialState, action) => {
   switch (action.type) {
     case HISTORY:
       if (selectedBlog) {
-        return state;
-      }
+        const newHistory = state.history.filter((blog)=>blog._id !== selectedBlog._id)
+        selectedBlog.count = selectedBlog.count + 1;
+        return {
+            ...state,
+            history:[...newHistory,selectedBlog]
+        }
+    }
       return {
         ...state,
-        history: [...state.history, action.payload],
+        history: [...state.history, { ...action.payload, count: 1 }],
       };
     case WISHLIST:
       if (selectedWish) {
@@ -39,6 +48,14 @@ const blogReducer = (state = initialState, action) => {
         wishlist: [...state.wishlist, action.payload],
       }
     case REMOVE_FROM_HISTORY:
+      if (selectedBlog.count > 1) {
+        const newHistory = state.history.filter((blog)=>blog._id !== selectedBlog._id)
+        selectedBlog.count = selectedBlog.count - 1;
+        return {
+            ...state,
+            history:[...newHistory,selectedBlog]
+        }
+    }
       return {
         ...state,
         history: state.history.filter(
@@ -60,6 +77,16 @@ const blogReducer = (state = initialState, action) => {
         ...state,
         blogs: action.payload,
       };
+    case SINGLEDATA:
+      return {
+        ...state,
+        blog: action.payload,
+      };
+    case SINGLEUPDATEDATA:
+      return {
+        ...state,
+        updateBlogLoad: action.payload,
+      };
     case SORT_ITEMS_ASC:
       return {
         ...state,
@@ -77,18 +104,18 @@ const blogReducer = (state = initialState, action) => {
           (blog) => blog._id !== action.payload
         ),
       };
-      case UPDATE_DATA:
-        const updateProduct = state.blogs.map(blog => {
-            if (blog._id === action.payload) {
-                return [...blog, action.payload]
-            } else {
-                return blog
-            }
-        })
-        return {
-            ...state,
-            blogs: updateProduct
+    case UPDATE_CONTENT:
+      const updateProduct = state.blogs.map(blog => {
+        if (blog._id === action.payload) {
+          return [...blog, action.payload]
+        } else {
+          return blog
         }
+      })
+      return {
+        ...state,
+        blogs: updateProduct
+      }
 
     default:
       return state;

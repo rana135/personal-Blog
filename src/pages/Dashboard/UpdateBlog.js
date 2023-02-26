@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import loadSingleUpdateData from '../../redux/thunk/Blogs/loadSingleUpdateData';
 import updateContentData from '../../redux/thunk/Blogs/updateContentData';
 
 const UpdateBlog = () => {
     const { id } = useParams();
-    console.log(id);
-
     const { register, handleSubmit, reset } = useForm();
     const dispatch = useDispatch();
+    const blogs = useSelector((state) => state.blog.updateBlogLoad);
 
     const submit = (data) => {
         const blog = {
@@ -30,16 +30,16 @@ const UpdateBlog = () => {
                     type: data.type,
                     text: data.text,
                 },
-                {
-                    type: data.type1,
-                    text: data.text1,
-                },
             ],
         };
         reset();
         console.log(blog);
-        dispatch(updateContentData(blog,id))
+        dispatch(updateContentData(blog, id))
     };
+
+    useEffect(() => {
+        dispatch(loadSingleUpdateData(id))
+    }, [id]);
 
     return (
         <div className='flex justify-center items-center h-full '>
@@ -51,19 +51,19 @@ const UpdateBlog = () => {
                     <label className='mb-2' htmlFor='name'>
                         Author Name
                     </label>
-                    <input type='text' id='name' {...register("name")} placeholder="Md Rana Hossain" />
+                    <input defaultValue={blogs?.author?.name} type='text' id='name' {...register("name")} placeholder="Md Rana Hossain" />
                 </div>
                 <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='email'>
                         Author Email
                     </label>
-                    <input type='text' name='email' id='email' {...register("email")} placeholder="rana@gmail.com" />
+                    <input defaultValue={blogs?.author?.email} type='text' name='email' id='email' {...register("email")} placeholder="rana@gmail.com" />
                 </div>
                 <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='email'>
                         Author Bio
                     </label>
-                    <input type='text' name='bio' id='bio' {...register("bio")} placeholder="Rana is a Professional Developer" />
+                    <input defaultValue={blogs?.author?.bio} type='text' name='bio' id='bio' {...register("bio")} placeholder="Rana is a Professional Developer" />
                 </div>
 
                 <div className='flex flex-col w-full max-w-xs'>
@@ -76,13 +76,13 @@ const UpdateBlog = () => {
                     <label className='mb-2' htmlFor='title'>
                         title
                     </label>
-                    <input type='text' name='title' id='title' {...register("title")} placeholder="what is Article" />
+                    <input defaultValue={blogs?.title} type='text' name='title' id='title' {...register("title")} placeholder="what is Article" />
                 </div>
                 <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='image'>
                         Image
                     </label>
-                    <input type='text' name='image' id='image' {...register("image")} placeholder="Image" />
+                    <input defaultValue={blogs?.image} type='text' name='image' id='image' {...register("image")} placeholder="Image" />
                 </div>
 
                 <div className='flex flex-col w-full max-w-xs'>
@@ -99,13 +99,14 @@ const UpdateBlog = () => {
                     <label className='mb-2' htmlFor='tags'>
                         tags
                     </label>
-                    <input type='text' name='tags' id='tags' {...register("tags")} placeholder="React" />
+                    <input defaultValue={blogs?.tags} type='text' name='tags' id='tags' {...register("tags")} placeholder="React" />
                 </div>
                 <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='type'>
                         type
                     </label>
                     <input
+                    defaultValue={blogs?.content?.map((blog)=> blog?.type)}
                         type='text'
                         name='type'
                         id='type'
@@ -118,6 +119,7 @@ const UpdateBlog = () => {
                         text
                     </label>
                     <input
+                    defaultValue={blogs?.content?.map((blog)=> blog?.text)}
                         type='text'
                         name='text'
                         id='text'
@@ -125,11 +127,12 @@ const UpdateBlog = () => {
                         placeholder="Blog Text"
                     />
                 </div>
-                <div className='flex flex-col w-full max-w-xs'>
+                {/* <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='type1'>
                         type1
                     </label>
                     <input
+                    defaultValue={blogs?.content?.map((blog)=> blog?.type)}
                         type='text'
                         name='type1'
                         id='type'
@@ -142,13 +145,14 @@ const UpdateBlog = () => {
                         text1
                     </label>
                     <input
+                    defaultValue={blogs?.content?.map((blog)=> blog?.type)}
                         type='text'
                         name='text1'
                         id='text1'
                         {...register("text1")}
                         placeholder="Blog Text"
                     />
-                </div>
+                </div> */}
 
                 <div className='flex justify-between items-center w-full'>
                     <button

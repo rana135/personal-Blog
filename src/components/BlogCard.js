@@ -6,7 +6,6 @@ import { MdDeleteForever } from "react-icons/md";
 import { history, removeFromHistory, removeFromWishlist, wishList } from "../redux/actions/blogAction";
 
 const BlogCard = ({ blog }) => {
-  //console.log(blog);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -18,6 +17,14 @@ const BlogCard = ({ blog }) => {
 
   return (
     <div className='shadow-lg relative rounded-3xl border p-3 flex flex-col text-white bg-sky-400'>
+
+      <div className="flex justify-end">
+        {pathname.includes("history") &&
+          <div className="bg-sky-500 absolute h-8 w-8 grid place-items-center text-white rounded-full">
+            <p>{blog?.count}</p>
+          </div>}
+      </div>
+
       <div>
         <img className='rounded-lg w-full h-56 mb-3' src={blog?.image} alt={blog?.categories} />
       </div>

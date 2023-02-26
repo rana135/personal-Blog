@@ -1,9 +1,8 @@
 import { updateBlogAction } from "../../actions/blogAction";
 
 const updateContentData = (blog, id) => {
-    console.log(blog,id, "bloggggg")
     return async (dispatch) => {
-        const res = await fetch(`http://localhost:5000/blog/${id}`, {
+        const res = await fetch(`https://personal-blog-server-steel.vercel.app/blog/${id}`, {
             method: "PUT",
             headers: {
                 "Content-type": "application/json"
@@ -12,7 +11,7 @@ const updateContentData = (blog, id) => {
         })
         const data = res.json()
         if (data.acknowledged) {
-            dispatch(updateBlogAction(...blog))
+            dispatch(updateBlogAction(blog))
         }
     }
 

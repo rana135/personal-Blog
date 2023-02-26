@@ -3,7 +3,7 @@ import { removeProduct } from "../../actions/blogAction";
 
 const deleteBlog = (id) => {
     return async (dispatch, getState) => {
-        const res = await fetch(`http://localhost:5000/blog/${id}`, {
+        const res = await fetch(`https://personal-blog-server-steel.vercel.app/blog/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json"

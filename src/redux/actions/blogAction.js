@@ -9,7 +9,9 @@ import {
   SORT_ITEMS_DESC,
   TOGGLE_TAGS,
   WISHLIST,
-  UPDATE_DATA,
+  UPDATE_CONTENT,
+  SINGLEDATA,
+  SINGLEUPDATEDATA,
 } from "../actionTypes/actionTypes";
 
 export const history = (blog) => {
@@ -53,12 +55,28 @@ export const loaded = (blogs) => {
     payload: blogs,
   };
 };
+
+export const singleLoaded = (blogsId) => {
+  return {
+    type: SINGLEDATA,
+    payload: blogsId,
+  };
+};
+
+export const singleUpdateLoaded = (singleBlog) => {
+  return {
+    type: SINGLEUPDATEDATA,
+    payload: singleBlog,
+  }
+}
+
 export const sortItemAsc = (blogs) => {
   return {
     type: SORT_ITEMS_ASC,
     payload: blogs,
   };
 };
+
 export const sortItemDesc = (blogs) => {
   return {
     type: SORT_ITEMS_DESC,
@@ -77,11 +95,10 @@ export const removeProduct = (id) => {
     payload: id,
   };
 };
-
-
 export const updateBlogAction = (data) => {
   return {
-     type: UPDATE_DATA,
-     payload: data
+    type: UPDATE_CONTENT,
+    payload: data
   }
 }
+

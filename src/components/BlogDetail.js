@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import loadSingleBlog from "../redux/thunk/Blogs/loadSingleBlog";
 
 const BlogDetail = () => {
+    const blog = useSelector((state) => state.blog.blog);
+    const dispatch = useDispatch();
     const { blogId } = useParams();
-    const [blog, setBlog] = useState([])
+  
     useEffect(() => {
-        const url = (`http://localhost:5000/blogs/${blogId}`)
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setBlog(data))
-    }, [blogId])
+        dispatch(loadSingleBlog(blogId))
+    }, [blogId]);
+
     return (
         <div className='relative rounded-3xl border p-3 flex flex-col'>
             <div>
